@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 16:20:07 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/06/26 19:46:35 by ael-kace         ###   ########.fr       */
+/*   Created: 2023/08/12 18:41:40 by ael-kace          #+#    #+#             */
+/*   Updated: 2023/08/13 19:14:12 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,16 @@ void	creaton_thread(t_philo *inf_philo, t_data *data)
 	pthread_mutex_init(&data->action, NULL);
 	while (++i < data->num_philo)
 	{
-		inf_philo->last_meal = ft_time();
+		if (inf_philo->id_philo % 2 == 0)
+			usleep(100);
 		pthread_create(&inf_philo->philo_t, NULL, &routin, inf_philo);
-		inf_philo = inf_philo->next;
 		pthread_detach(inf_philo->philo_t);
+		usleep(150);
+		inf_philo = inf_philo->next;
 	}
-	check_death(inf_philo);
-	ft_is_make_action(5);
+	if (data->num_rep_eat != -1)
+		check_nbr_meal(inf_philo);
+	if (check_death(inf_philo) > 0)
+		return ;
+	usleep(150);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 16:20:57 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/06/23 17:58:44 by ael-kace         ###   ########.fr       */
+/*   Created: 2023/08/12 18:41:34 by ael-kace          #+#    #+#             */
+/*   Updated: 2023/08/13 22:38:19 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ t_philo	*ft_lstnew(int nbr, t_data *data)
 	pthread_mutex_init(&new->forks, NULL);
 	pthread_mutex_init(&new->time, NULL);
 	new->id_philo = nbr;
+	new->last_meal = ft_time();
 	new->num_of_die = data->num_die;
 	new->num_of_eat = data->num_eat;
 	new->num_of_sleep = data->num_sleep;
 	new->nb_meal = data->num_rep_eat;
+	new->flag = 0;
 	new->inf_data = data;
 	new->next = NULL;
 	return (new);

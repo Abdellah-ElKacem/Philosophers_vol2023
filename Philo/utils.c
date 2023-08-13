@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 10:38:39 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/06/22 14:07:46 by ael-kace         ###   ########.fr       */
+/*   Created: 2023/08/12 18:41:05 by ael-kace          #+#    #+#             */
+/*   Updated: 2023/08/12 20:49:09 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,19 @@ long	ft_time(void)
 	gettimeofday(&time, NULL);
 	current_time = time.tv_sec * 1000 + time.tv_usec / 1000;
 	if (!start)
-		start = current_time;
+		start = current_time; 
 	return (current_time - start);
 }
+
+// long	ft_time_d(void)
+// {
+// 	struct timeval	time;
+// 	long			current_time;
+// 	static long		start;
+
+// 	gettimeofday(&time, NULL);
+// 	current_time = time.tv_sec * 1000 + time.tv_usec / 1000;
+// 	if (!start)
+// 		start = current_time;
+// 	return (current_time);
+// }

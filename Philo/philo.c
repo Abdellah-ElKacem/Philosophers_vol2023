@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 09:53:45 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/06/23 11:57:02 by ael-kace         ###   ########.fr       */
+/*   Created: 2023/08/12 18:41:28 by ael-kace          #+#    #+#             */
+/*   Updated: 2023/08/13 22:37:59 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,9 @@ int	put_arg(int ac, char **av, t_data *data)
 	data->num_die = ft_atoi(av[2]);
 	data->num_eat = ft_atoi(av[3]);
 	data->num_sleep = ft_atoi(av[4]);
-	if (data->num_philo < 1 || data->num_die < 1
-		|| data->num_eat < 1 || data->num_sleep < 1)
-		return (0);
+	data->flag_meal = 0;
 	if (ac == 6)
-	{
 		data->num_rep_eat = ft_atoi(av[5]);
-		if (data->num_rep_eat < 1)
-			return (0);
-	}
 	else
 		data->num_rep_eat = -1;
 	return (1);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 14:32:11 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/06/26 19:18:06 by ael-kace         ###   ########.fr       */
+/*   Created: 2023/08/12 18:41:13 by ael-kace          #+#    #+#             */
+/*   Updated: 2023/08/13 16:55:22 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ void	ft_is_make_action(long action)
 	long	begin;
 
 	begin = ft_time();
+	usleep(action * 0.5);
 	while (ft_time() - begin < action)
-		usleep(50);
+		usleep(100);
 }
 
 void	ft_print(t_philo *philo, char *str)
@@ -39,9 +40,8 @@ void	check_nb_meal(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->inf_data->action);
 	if (philo->nb_meal > 0)
-	{
 		philo->nb_meal--;
-	}
+	// usleep(100);
 	pthread_mutex_unlock(&philo->inf_data->action);
 }
 
@@ -50,8 +50,6 @@ void	*routin(void *rou)
 	t_philo	*philo;
 
 	philo = (t_philo *)rou;
-	if (philo->id_philo % 2 == 0)
-		usleep(150);
 	while (1)
 	{
 		pthread_mutex_lock(&philo->forks);
@@ -61,12 +59,12 @@ void	*routin(void *rou)
 		ft_print(philo, "is eating");
 		get_time(philo);
 		ft_is_make_action(philo->num_of_eat);
+		check_nb_meal(philo);
 		pthread_mutex_unlock(&philo->forks);
 		pthread_mutex_unlock(&philo->next->forks);
 		ft_print(philo, "is sleeping");
 		ft_is_make_action(philo->num_of_sleep);
 		ft_print(philo, "is thinking");
-		check_nb_meal(philo);
 	}
 	return (NULL);
 }
