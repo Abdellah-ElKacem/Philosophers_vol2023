@@ -6,7 +6,7 @@
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 18:41:13 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/08/13 16:55:22 by ael-kace         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:16:36 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	check_nb_meal(t_philo *philo)
 	pthread_mutex_lock(&philo->inf_data->action);
 	if (philo->nb_meal > 0)
 		philo->nb_meal--;
-	// usleep(100);
 	pthread_mutex_unlock(&philo->inf_data->action);
 }
 
@@ -52,6 +51,8 @@ void	*routin(void *rou)
 	philo = (t_philo *)rou;
 	while (1)
 	{
+		if (philo->nb_meal == 0)
+			break ;
 		pthread_mutex_lock(&philo->forks);
 		ft_print(philo, "has taken a fork");
 		pthread_mutex_lock(&philo->next->forks);

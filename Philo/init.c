@@ -6,7 +6,7 @@
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 18:41:40 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/08/13 19:14:12 by ael-kace         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:48:23 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void	creaton_thread(t_philo *inf_philo, t_data *data)
 		usleep(150);
 		inf_philo = inf_philo->next;
 	}
-	if (data->num_rep_eat != -1)
-		check_nbr_meal(inf_philo);
 	if (check_death(inf_philo) > 0)
 		return ;
 	usleep(150);

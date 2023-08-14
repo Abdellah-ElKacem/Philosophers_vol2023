@@ -6,7 +6,7 @@
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 18:41:21 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/08/13 22:33:42 by ael-kace         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:04:29 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_philo
 	pthread_mutex_t	forks;
 	pthread_mutex_t	time;
 	int				id_philo;
-	int				flag;
 	long			last_meal;
+	int				flag;
 	long			num_of_die;
 	long			num_of_eat;
 	long			num_of_sleep;
@@ -62,7 +62,5 @@ long	ft_time(void);
 void	ft_print(t_philo *philo, char *str);
 int		check_death(t_philo *philo);
 void	ft_is_make_action(long action);
-int		check_nbr_meal(t_philo *philo);
-// void	rep_meal_gl(t_philo *philo);
 
 #endif

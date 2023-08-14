@@ -6,7 +6,7 @@
 #    By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/15 10:27:20 by ael-kace          #+#    #+#              #
-#    Updated: 2023/08/13 12:13:16 by ael-kace         ###   ########.fr        #
+#    Updated: 2023/08/14 11:11:44 by ael-kace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ OBJ = $(SRC:.c=.o)
 CC = cc 
 
 CFLAG = -Wall -Wextra -Werror -pthread 
+#CFLAG = -Wall -Wextra -Werror -pthread -fsanitize=address
 
 all : $(NAME)
 

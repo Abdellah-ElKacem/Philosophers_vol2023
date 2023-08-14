@@ -6,7 +6,7 @@
 /*   By: ael-kace <ael-kace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 18:41:28 by ael-kace          #+#    #+#             */
-/*   Updated: 2023/08/13 22:37:59 by ael-kace         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:04:42 by ael-kace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	main(int ac, char **av)
 		return (write(1, "Error : Invalid Arg !", 22), 0);
 	if (!put_arg(ac, av, &info))
 		return (write(1, "Error : Invalid Number !", 25), 0);
+	if (!info.num_philo)
+		return (0);
 	creaton_thread(philo, &info);
 	return (0);
 }
